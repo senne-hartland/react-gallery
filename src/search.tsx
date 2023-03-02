@@ -1,4 +1,4 @@
-import { SetStateAction, SyntheticEvent, useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import './app.css';
 import {Searchbar} from './Searchbar'
 import {Gallery} from './Gallery'

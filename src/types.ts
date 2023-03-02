@@ -9,4 +9,4 @@ type GalleryProp = {
 	setImages: Dispatch<SetStateAction<string[]>>;
 };
 
-export { SearchProp, GalleryProp };
+export type { SearchProp, GalleryProp };

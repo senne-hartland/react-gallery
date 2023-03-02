@@ -14,13 +14,13 @@ const fetchingPhotos = async (keyword: string) => {
 		.then(result => result);
 	const imagesArray = unsplashObj.response?.results;
   const outputArray : string[] = []
-  imagesArray?.map(item => {
+  imagesArray?.forEach(item => {
     outputArray.push(item.urls.small)
   })
 	return outputArray;
 };
 
-const Searchbar = ({ historyText , setHistory} : SearchProp, { setImages} : GalleryProp) => {
+const Searchbar = ({ historyText , setHistory} : SearchProp, {setImages} : GalleryProp) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const outputRef = useRef<HTMLParagraphElement>(null);
     const ShowSuggestions = () => {
