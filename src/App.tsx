@@ -1,9 +1,6 @@
 import { SetStateAction, SyntheticEvent, useEffect, useRef, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import TextField from '@mui/material/TextField';
-import Stack from '@mui/material/Stack';
-import Autocomplete from '@mui/material/Autocomplete';
 import { createApi } from 'unsplash-js';
 
 const unsplash = createApi({
@@ -22,55 +19,50 @@ const unsplash = createApi({
   }
 
 function App() {
-  const [history, setHistory] = useState(['cat', 'dog', 'duck', 'catdog', 'seal']);
-  const inputRef = useRef<HTMLInputElement>(null)
+  const [history, setHistory] = useState(['cat', 'dog', 'duck', 'catdog', 'seal']);  
+  const inputRef = useRef<HTMLInputElement>(null);
+  const outputRef = useRef<HTMLParagraphElement>(null);
+  
+  const ShowSuggestions = () => {
+    return <><ul className='search__section__ul' >{history.map(hist => {
+      if(inputRef.current) {
+          return <li className='' key={hist}>{hist}</li>
+       } else {
+        return <li></li>
+       }
+      }
+      )}</ul>
+    </>
+  }
+    
+  const searchSuggestions = () => {
+    if (inputRef.current?.value)
+    { if (!history.includes(inputRef.current.value))
+      {setHistory([inputRef.current.value, ...history])}
+      }
+  }
   
   const SearchBar = () => {
-    // const [searchValue, setSearchValue] = useState('');
-    const searchValue = useRef('');
-    const userTypeIn = ''
-
-    const handleSearchChange = () => {
-      if (inputRef.current) {
-        inputRef.current.value = userTypeIn
-
-        console.log('here is the usert type', userTypeIn)
-        console.log('here is the value', inputRef.current.value)
-        console.log('Logging inputRef: ', inputRef)
-        // return searchValue
-      }
-      // setSearchValue(event.target.value);
-    };
-  
-    const handleSearchSubmit = (event: { preventDefault: () => void; }) => {
-      event.preventDefault();
-      // setHistory([...history, searchValue]);
-      // setSearchValue('');
-    };
-  
     return <>
-    <form onSubmit={handleSearchSubmit} className='search'>
+    <form onSubmit={(event) => event.preventDefault()} className='search'>
       <section className='search__section'>
-      <Stack spacing={2} sx={{ width: 300 }}>
-      <Autocomplete
-        disableClearable
-        options={history.map((option) => option)}
-        renderInput={(params) => (
-          <TextField {...params}
-            label="Search input"
-            value={searchValue}
-            onChange={handleSearchChange}
-            InputProps={{...params.InputProps, type: 'search',}}
-            ref={inputRef}
-          />
-        )}
-       />
-      </Stack>
+        <div>
+        <input className='search__section__input' ref={inputRef} onKeyUp={() => {
+          const inputVal = inputRef.current?.value;
+          outputRef.current!.textContent = inputVal || '';
+        }}/>
+        <ShowSuggestions />
+      <p ref={outputRef}>
+      </p>
+      </div>
+      <button className='search-button button-2' onClick={searchSuggestions}>
+        Search
+      </button>
       </section>
     </form>
   </>
   };
-  
+
   // const Gallery = async() => {
   //   const unsplashObj = await fetchingPhotos(searchValue);
   //   unsplashObj.response?.results.map(item => {

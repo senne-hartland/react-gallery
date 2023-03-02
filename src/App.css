@@ -46,6 +46,10 @@ HTML {
 	display: flex;
 	justify-content: center;
 }
+.search__section {
+	display: flex;
+	flex-direction: row;
+}
 
 .search__section__input {
 	width: inherit;
