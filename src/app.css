@@ -17,6 +17,26 @@ HTML {
 		animation: App-logo-spin infinite 20s linear;
 	}
 }
+.navbar ul {
+	display: flex;
+	list-style: none;
+}
+.navbar ul li {
+	text-decoration: none;
+	margin: 10px;
+}
+
+.navbar ul li .anchor {
+	color: black;
+	text-decoration: none;
+	font-size: large;
+	box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 30%);
+}
+
+.navbar ul li .anchor:hover {
+	background-color: #164899;
+	color: white;
+}
 
 .App-header {
 	background-color: #95bdff;
@@ -24,7 +44,7 @@ HTML {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	justify-content: flex-start;
+	justify-content: space-between;
 	font-size: calc(10px + 2vmin);
 	color: white;
 }
