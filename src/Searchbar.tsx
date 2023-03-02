@@ -23,10 +23,11 @@ const fetchingPhotos = async (keyword: string) => {
 const Searchbar = ({ historyText , setHistory} : SearchProp, {setImages} : GalleryProp) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const outputRef = useRef<HTMLParagraphElement>(null);
-    const ShowSuggestions = () => {
+    
+  const ShowSuggestions = () => {
       return <> <ul className='search__section__ul' >{historyText.map(hist => {
         if(inputRef.current) {
-            return <li className='' key={hist}>{hist}</li>
+            return <li className='search__section__item' key={hist}>{hist}</li>
          } else {
           return <li></li>
          }

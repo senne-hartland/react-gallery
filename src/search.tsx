@@ -10,7 +10,7 @@ const Search = () => {
   return (
     <div className="App">
       <main>
-            <Searchbar historyText={history} setHistory={setHistory} setImages={setImages}  />
+            <Searchbar historyText={history} setHistory={setHistory} />
             <Gallery images={images} setImages={setImages} />
       </main>
     </div>
