@@ -1,73 +1,66 @@
 HTML {
-background-color: #B4E4FF;
+	background-color: #b4e4ff;
 }
 
 .App {
-  text-align: center;
+	text-align: center;
 }
 
 .App-logo {
-  height: 90px;
-  pointer-events: none;
-  margin-left: 15px;
+	height: 90px;
+	pointer-events: none;
+	margin-left: 15px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+	.App-logo {
+		animation: App-logo-spin infinite 20s linear;
+	}
 }
 
 .App-header {
-  background-color: #95BDFF;
-  min-height: 110px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  font-size: calc(10px + 2vmin);
-  color: white;
+	background-color: #95bdff;
+	min-height: 110px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+	font-size: calc(10px + 2vmin);
+	color: white;
 }
 
 .App-link {
-  color: #61dafb;
+	color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
 }
 
 .search {
-display: flex;
-justify-content: center;
-}
-
-.search__section {
-  width:200px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+	display: flex;
+	justify-content: center;
 }
 
 .search__section__input {
-  width: inherit;
+	width: inherit;
 	height: 40px;
 	border-radius: 10px;
 	border: 1px solid grey;
 	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .search__section__ul {
-  width: inherit;
-  background-color: white;
-  list-style: none;
-  padding: 0px;
-  margin: 0px;
-  text-align: left;
+	width: inherit;
+	background-color: white;
+	list-style: none;
+	padding: 0px;
+	margin: 0px;
+	text-align: left;
 }
 
 .button-2 {
@@ -88,10 +81,10 @@ justify-content: center;
 	padding: 6px;
 	border: 1px solid grey;
 	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  max-height: 40px;
+	max-height: 40px;
 }
 
 .button-2:hover {
-	background-color: #95BDFF;
+	background-color: #95bdff;
 	box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 30%);
 }
