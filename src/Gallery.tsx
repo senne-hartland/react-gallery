@@ -6,7 +6,7 @@ const Gallery = ({ images , setImages} : GalleryProp) => {
       <div className='flip-card'>
         <div className='flip-card-inner'>
           <div className='flip-card-front'> 
-            <img src={item} className='foundimages'/>
+            <img src={item} className='foundimages' />
           </div>
           <div className='flip-card-back'>
             <p className='text-alt-info'>"info"</p>

@@ -2,7 +2,9 @@ import { Routes, Route, Link } from "react-router-dom";
 import logo from './logo.svg';
 import About from "./about";
 import Home from "./home";
-import Search from "./search";
+import {Search} from "./search";
+
+
 const App = () => {
   return ( <>
     <header className="App-header">

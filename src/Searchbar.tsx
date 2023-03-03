@@ -1,6 +1,6 @@
 import './app.css';
 import { createApi } from 'unsplash-js';
-import { SearchProp, GalleryProp, ShowSuggestionsProp} from './types';
+import { SearchProp} from './types';
 import ShowSuggestions from './ShowSuggestions';
 
 const unsplash = createApi({
@@ -19,6 +19,7 @@ const fetchingPhotos = async (keyword: string) => {
 	return outputArray;
 };
 
+
 const Searchbar = ({ historyText , setHistory, inputRef, outputRef, setImages} : SearchProp) => {
   const searchSuggestions = () => {
     if (inputRef.current?.value) { 
@@ -31,7 +32,7 @@ const Searchbar = ({ historyText , setHistory, inputRef, outputRef, setImages} :
     return <>
       <div className="App">
         <main>
-          <form onSubmit={(event) => event.preventDefault()} className='search'>
+          <form action='' onSubmit={(event) => event.preventDefault()} className='search'>
             <section className='search__section'>
               <div>
               <input className='search__section__input' ref={inputRef} onKeyUp={() => {
@@ -42,6 +43,7 @@ const Searchbar = ({ historyText , setHistory, inputRef, outputRef, setImages} :
                 <p ref={outputRef}>
                 </p>
               </div>
+              <input type='hidden'></input>
               <button className='search-button button-2' onClick={searchSuggestions}>
                 Search
               </button>
