@@ -1,8 +1,7 @@
 import './app.css';
-import { useRef } from 'react';
 import { createApi } from 'unsplash-js';
-import { SearchProp, GalleryProp } from './types';
-
+import { SearchProp, GalleryProp, ShowSuggestionsProp} from './types';
+import ShowSuggestions from './ShowSuggestions';
 
 const unsplash = createApi({
 	accessKey: 'O3jf0Le_tBem9sMo0Y2Nlis9VKNAVqEsTDPUzZWetb4',
@@ -20,59 +19,38 @@ const fetchingPhotos = async (keyword: string) => {
 	return outputArray;
 };
 
-const Searchbar = ({ historyText , setHistory} : SearchProp, {setImages} : GalleryProp) => {
-  const inputRef = useRef<HTMLInputElement>(null);
-  const outputRef = useRef<HTMLParagraphElement>(null);
-    
-  const ShowSuggestions = () => {
-      return <> <ul className='search__section__ul' >{historyText.map(hist => {
-        if(inputRef.current) {
-            return <li className='search__section__item' key={hist}>{hist}</li>
-         } else {
-          return <li></li>
-         }
-        }
-      )}
-    </ul>
-  </>
-  }
-    const searchSuggestions = () => {
-      if (inputRef.current?.value) { 
-        if (!historyText.includes(inputRef.current.value)) {
-          setHistory([inputRef.current.value, ...historyText])
-        }
-        fetchingPhotos(inputRef.current.value).then(result => setImages(result!))
+const Searchbar = ({ historyText , setHistory, inputRef, outputRef, setImages} : SearchProp) => {
+  const searchSuggestions = () => {
+    if (inputRef.current?.value) { 
+      if (!historyText.includes(inputRef.current.value)) {
+        setHistory([inputRef.current.value, ...historyText])
       }
+      fetchingPhotos(inputRef.current.value).then(result => setImages(result!))
     }
-
-    const SearchBar2 = () => {
-      return <>
-      <form onSubmit={(event) => event.preventDefault()} className='search'>
-        <section className='search__section'>
-          <div>
-          <input className='search__section__input' ref={inputRef} onKeyUp={() => {
-            const inputVal = inputRef.current?.value;
-            outputRef.current!.textContent = inputVal || '';
-          }}/>
-          <ShowSuggestions />
-        <p ref={outputRef}>
-        </p>
-        </div>
-        <button className='search-button button-2' onClick={searchSuggestions}>
-          Search
-        </button>
-        </section>
-      </form>
-    </>
-    };
-  
-    return (
+  }
+    return <>
       <div className="App">
         <main>
-          <SearchBar2 />
-        </main>
-      </div>
-    );
-  }
+          <form onSubmit={(event) => event.preventDefault()} className='search'>
+            <section className='search__section'>
+              <div>
+              <input className='search__section__input' ref={inputRef} onKeyUp={() => {
+                const inputVal = inputRef.current?.value;
+                outputRef.current!.textContent = inputVal || '';
+              }}/>
+              <ShowSuggestions inputRef={inputRef} historyText={historyText} />
+                <p ref={outputRef}>
+                </p>
+              </div>
+              <button className='search-button button-2' onClick={searchSuggestions}>
+                Search
+              </button>
+            </section>
+          </form>
+      </main>
+    </div>
+
+  </>
+  };
 
 export {Searchbar}
